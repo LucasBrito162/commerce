@@ -33,7 +33,7 @@ public class UserController {
     }
 
     // Get ID
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> buscarId(@PathVariable Long id) {
         return userRepository.findById(id)
                 .map(ResponseEntity::ok)
@@ -41,7 +41,7 @@ public class UserController {
     }
 
     // Put
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public ResponseEntity<User> atualizarDados(@PathVariable Long id, @RequestBody User atualizarUser) {
         return userRepository.findById(id)
                 .map(existeUser -> {
@@ -64,7 +64,7 @@ public class UserController {
     }
 
     // Delete
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         if (!userRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
